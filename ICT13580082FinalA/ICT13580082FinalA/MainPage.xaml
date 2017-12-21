@@ -2,12 +2,124 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ICT13580082FinalA"
-             x:Class="ICT13580082FinalA.MainPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             x:Class="ICT13580082FinalA.MainPage"
+             Title="ICT13580082FinalA"
+             Icon="snow"
+             BackgroundColor="#CB9393">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+        Text="New"
+        x:Name="newButton"
+        />
+    </ContentPage.ToolbarItems>
+
+    <ListView
+        x:Name="productListView"
+        RowHeight="300">
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+
+                <ViewCell>
+                    <ViewCell.ContextActions>
+
+                        <MenuItem
+                    Text="Edit"
+                    CommandParameter="{Binding .}"
+                    Clicked="Edit_Clicked"/>
+
+                        <MenuItem
+                    Text="Delete"
+                    CommandParameter="{Binding .}"
+                    IsDestructive="true"
+                    Clicked="Delete_Clicked"/>
+
+                    </ViewCell.ContextActions>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="30"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+                        BackgroundColor="White"
+                        HeightRequest="100"
+                        Source="http://cdn-wpmsa.defymedia.com/wp-content/uploads/sites/3/2016/12/sloth.jpg"/>
+
+
+                        <StackLayout
+                        Grid.Column="1">
+
+                            <Label
+                        Text="{Binding Name}"
+                        FontAttributes="Bold"
+                        TextColor="#581845"/>
+
+                            <Label
+                        Text="{Binding LastName}"
+                        LineBreakMode="TailTruncation"
+                        TextColor="Black"/>
+
+                            <Label
+                        Text="{Binding Age, StringFormat='Age :  {0:N0} Years old'}"
+                        
+                        TextColor="Black"/>
+
+                            <Label
+                        Text="{Binding Gender}"
+                        TextColor="Black"/>
+
+                            <Label
+                        Text="{Binding Department, StringFormat='แผนก : {0}'}"
+                        TextColor="Black"/>
+
+                            <Label
+                        Text="{Binding PhoneNumber, StringFormat='เบอร์โทรศัพท์ : {0}'}"
+                        TextColor="Black"/>
+
+                            <Label
+                        Text="{Binding Email, StringFormat='E-mail : {0}'}"
+                        TextColor="Black"/>
+
+                            <Label
+                        Text="{Binding Address, StringFormat='ที่อยุ่ : {0}'}"
+                        TextColor="Black"
+                        LineBreakMode="TailTruncation"/>
+
+                            <Label
+                        Text="{Binding Status, StringFormat='สถานะ : {0}'}"
+                        TextColor="Black"
+                        LineBreakMode="TailTruncation"/>
+
+                            <Label
+                        Text="{Binding Child, StringFormat='จำนวนบุตร : {0}'}"
+                        TextColor="Black"/>
+
+                            <Label
+                        Text="{Binding Salary, StringFormat='เงินเดือน :  {0:N0} บาท'}"
+                        TextColor="Black"/>
+
+                        </StackLayout>
+
+                        <Button
+                        Text="+"
+                        FontSize="30"
+                        Grid.Column="2"
+                        Margin="5"
+                        BackgroundColor="Silver"
+                        VerticalOptions="End"
+                        HeightRequest="50"/>
+
+                    </Grid>
+
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+
+    </ListView>
+
 </ContentPage>
